@@ -11,16 +11,20 @@ namespace BlogBalta
         private const string CONNECTION_STRING = "Data source=localhost; Initial Catalog=BlogBalta; Persist Security Info=True; Integrated Security=SSPI;";
         static void Main(string[] args)
         {
-            //ReadUsers();
+            var connection = new SqlConnection(CONNECTION_STRING);
+            connection.Open();
+            ReadUsers(connection);
             //ReadUser();
             //CreateUser();
-            UpdateUser();
+            //UpdateUser();
+            connection.Close();
         }
 
-        public static void ReadUsers()
+        public static void ReadUsers(SqlConnection connection)
         {
-            var repository = new UserRepository();
+            var repository = new UserRepository(connection);
             var users = repository.Get();
+
             foreach (var user in users)
                 Console.WriteLine(user.Name);
 
