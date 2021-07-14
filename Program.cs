@@ -14,6 +14,7 @@ namespace BlogBalta
             var connection = new SqlConnection(CONNECTION_STRING);
             connection.Open();
             ReadUsers(connection);
+            ReadRoles(connection);
             //ReadUser();
             //CreateUser();
             //UpdateUser();
@@ -28,6 +29,16 @@ namespace BlogBalta
             foreach (var user in users)
                 Console.WriteLine(user.Name);
 
+        }
+
+
+        public static void ReadRoles(SqlConnection connection)
+        {
+            var repository = new RoleRepository(connection);
+            var roles = repository.Get();
+
+            foreach (var role in roles)
+                Console.WriteLine(role.Name);
         }
 
         public static void ReadUser()
