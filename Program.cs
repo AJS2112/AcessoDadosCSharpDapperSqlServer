@@ -24,11 +24,17 @@ namespace BlogBalta
 
         public static void ReadUsers(SqlConnection connection)
         {
-            var repository = new Repository<User>(connection);
-            var items = repository.Get();
+            var repository = new UserRepository(connection);
+            var items = repository.GetWithRoles();
 
             foreach (var item in items)
+            {
                 Console.WriteLine(item.Name);
+                foreach (var role in item.Roles)
+                {
+                    Console.WriteLine($" - {role.Name}");
+                }
+            }
 
         }
 
@@ -56,6 +62,13 @@ namespace BlogBalta
             var item = repository.Get(id);
 
             Console.WriteLine(item.Name);
+        }
+
+
+        public static void CreateUsers(SqlConnection connection)
+        {
+            var repository = new Repository<User>(connection);
+
         }
 
         public static void CreateUser()
