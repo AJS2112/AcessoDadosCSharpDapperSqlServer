@@ -12,7 +12,9 @@ namespace BlogBalta.Screens.TagScreens
             Console.WriteLine("O que deseja fazer?");
             Console.WriteLine("");
             Console.WriteLine("1 - Listar tags");
-            Console.WriteLine("2 - Cadastrar tags:");
+            Console.WriteLine("2 - Cadastrar tag:");
+            Console.WriteLine("3 - Atualizar tag:");
+            Console.WriteLine("4 - Excluir tag:");
             Console.WriteLine("");
             Console.WriteLine("");
 
